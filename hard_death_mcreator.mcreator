@@ -123,6 +123,22 @@
       "compiles": true,
       "locked_code": false,
       "registry_name": "clear_memento_mori"
+    },
+    {
+      "name": "MementoMoriWatchdog",
+      "type": "procedure",
+      "sortid": 7,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "memento_mori_watchdog",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
     }
   ],
   "variable_elements": [
