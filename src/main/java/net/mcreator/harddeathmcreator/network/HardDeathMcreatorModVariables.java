@@ -36,8 +36,9 @@ import java.util.function.Supplier;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class HardDeathMcreatorModVariables {
-	public static double mementoMoriIlnessInterval = 7200.0;
+	public static double mementoMoriIlnessInterval = 3600.0;
 	public static double mementoMoriIlnessNauseaDuration = 30.0;
+	public static double mementoMoriBlackoutInterval = 7200.0;
 
 	@SubscribeEvent
 	public static void init(FMLCommonSetupEvent event) {

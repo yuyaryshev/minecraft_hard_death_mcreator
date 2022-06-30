@@ -49,7 +49,7 @@ public class MementoMoriOnEffectActiveTickProcedure {
 			}
 			if ((entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(HardDeathMcreatorModMobEffects.MEMENTO_MORI.get())
 					? _livEnt.getEffect(HardDeathMcreatorModMobEffects.MEMENTO_MORI.get()).getDuration()
-					: 0) % 7200 <= 0) {
+					: 0) % HardDeathMcreatorModVariables.mementoMoriIlnessInterval <= 0) {
 				if (entity instanceof LivingEntity _entity)
 					_entity.addEffect(
 							new MobEffectInstance(MobEffects.WEAKNESS, (int) HardDeathMcreatorModVariables.mementoMoriIlnessInterval, (int) mmlv));
@@ -62,6 +62,10 @@ public class MementoMoriOnEffectActiveTickProcedure {
 						_entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN,
 								(int) HardDeathMcreatorModVariables.mementoMoriIlnessInterval, 1));
 				}
+			}
+			if ((entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(HardDeathMcreatorModMobEffects.MEMENTO_MORI.get())
+					? _livEnt.getEffect(HardDeathMcreatorModMobEffects.MEMENTO_MORI.get()).getDuration()
+					: 0) % HardDeathMcreatorModVariables.mementoMoriBlackoutInterval <= 0) {
 				if (mmlv > 2) {
 					if (entity instanceof LivingEntity _entity)
 						_entity.addEffect(new MobEffectInstance(MobEffects.CONFUSION,
