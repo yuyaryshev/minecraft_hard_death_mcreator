@@ -42,8 +42,7 @@ public class MementoMoriWatchdogProcedure {
 						(int) (entity.getCapability(HardDeathMcreatorModVariables.PLAYER_VARIABLES_CAPABILITY, null)
 								.orElse(new HardDeathMcreatorModVariables.PlayerVariables())).memento_mori_time_left,
 						(int) (entity.getCapability(HardDeathMcreatorModVariables.PLAYER_VARIABLES_CAPABILITY, null)
-								.orElse(new HardDeathMcreatorModVariables.PlayerVariables())).memento_mori_lv,
-						(true), (false)));
+								.orElse(new HardDeathMcreatorModVariables.PlayerVariables())).memento_mori_lv));
 			if (entity instanceof Player _player && !_player.level.isClientSide())
 				_player.displayClientMessage(new TextComponent("You can't avoid death toll of Memento Mori."), (false));
 		}

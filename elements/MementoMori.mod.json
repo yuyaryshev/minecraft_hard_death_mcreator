@@ -13,9 +13,6 @@
     "isBenefitical": false,
     "renderStatusInInventory": false,
     "renderStatusInHUD": true,
-    "onStarted": {
-      "name": "MementoMoriEffectStartedapplied"
-    },
     "onActiveTick": {
       "name": "MementoMoriOnEffectActiveTick"
     },

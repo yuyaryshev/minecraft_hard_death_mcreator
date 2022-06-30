@@ -12,7 +12,6 @@ import net.minecraft.client.gui.screens.inventory.EffectRenderingInventoryScreen
 import net.minecraft.client.gui.GuiComponent;
 
 import net.mcreator.harddeathmcreator.procedures.MementoMoriOnEffectActiveTickProcedure;
-import net.mcreator.harddeathmcreator.procedures.MementoMoriEffectStartedappliedProcedure;
 import net.mcreator.harddeathmcreator.procedures.MementoMoriEffectExpiresProcedure;
 
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -25,11 +24,6 @@ public class MementoMoriMobEffect extends MobEffect {
 	@Override
 	public String getDescriptionId() {
 		return "effect.hard_death_mcreator.memento_mori";
-	}
-
-	@Override
-	public void addAttributeModifiers(LivingEntity entity, AttributeMap attributeMap, int amplifier) {
-		MementoMoriEffectStartedappliedProcedure.execute(entity);
 	}
 
 	@Override
