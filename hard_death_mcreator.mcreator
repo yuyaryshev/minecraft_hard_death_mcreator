@@ -1,9 +1,52 @@
 {
-  "mod_elements": [],
+  "mod_elements": [
+    {
+      "name": "MementoMoriEffectStartedapplied",
+      "type": "procedure",
+      "sortid": 1,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "memento_mori_effect_startedapplied",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "MementoMori",
+      "type": "potioneffect",
+      "sortid": 1,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "memento_mori"
+    },
+    {
+      "name": "MementoMoriOnDeath",
+      "type": "procedure",
+      "sortid": 2,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "memento_mori_on_death",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    }
+  ],
   "variable_elements": [],
   "sound_elements": [],
   "language_map": {
-    "en_us": {}
+    "en_us": {
+      "effect.hard_death_mcreator.memento_mori": "Memento Mori"
+    }
   },
   "foldersRoot": {
     "name": "~",

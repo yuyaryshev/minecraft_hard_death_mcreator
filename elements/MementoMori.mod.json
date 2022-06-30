@@ -1,0 +1,20 @@
+{
+  "_fv": 28,
+  "_type": "potioneffect",
+  "definition": {
+    "effectName": "Memento Mori",
+    "icon": "mementomorigeneric.png",
+    "color": {
+      "value": -13434778,
+      "falpha": 0.0
+    },
+    "isInstant": false,
+    "isBad": true,
+    "isBenefitical": false,
+    "renderStatusInInventory": false,
+    "renderStatusInHUD": true,
+    "onStarted": {
+      "name": "MementoMoriEffectStartedapplied"
+    }
+  }
+}
