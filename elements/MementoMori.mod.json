@@ -15,6 +15,12 @@
     "renderStatusInHUD": true,
     "onStarted": {
       "name": "MementoMoriEffectStartedapplied"
+    },
+    "onActiveTick": {
+      "name": "MementoMoriOnEffectActiveTick"
+    },
+    "onExpired": {
+      "name": "MementoMoriEffectExpires"
     }
   }
 }

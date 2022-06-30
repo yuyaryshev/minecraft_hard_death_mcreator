@@ -5,12 +5,11 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.network.chat.TextComponent;
 
+import net.mcreator.harddeathmcreator.network.HardDeathMcreatorModVariables;
 import net.mcreator.harddeathmcreator.init.HardDeathMcreatorModMobEffects;
 
 import javax.annotation.Nullable;
@@ -31,9 +30,27 @@ public class MementoMoriOnDeathProcedure {
 	private static void execute(@Nullable Event event, Entity entity) {
 		if (entity == null)
 			return;
-		if (entity instanceof Player _player && !_player.level.isClientSide())
-			_player.displayClientMessage(new TextComponent("Before Memento Mori applied"), (true));
+		{
+			double _setval = (entity.getCapability(HardDeathMcreatorModVariables.PLAYER_VARIABLES_CAPABILITY, null)
+					.orElse(new HardDeathMcreatorModVariables.PlayerVariables())).memento_mori_lv + 1;
+			entity.getCapability(HardDeathMcreatorModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
+				capability.memento_mori_lv = _setval;
+				capability.syncPlayerVariables(entity);
+			});
+		}
+		{
+			double _setval = 10 * 3600 * Math.pow(2, (entity.getCapability(HardDeathMcreatorModVariables.PLAYER_VARIABLES_CAPABILITY, null)
+					.orElse(new HardDeathMcreatorModVariables.PlayerVariables())).memento_mori_lv - 1);
+			entity.getCapability(HardDeathMcreatorModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
+				capability.memento_mori_time_left = _setval;
+				capability.syncPlayerVariables(entity);
+			});
+		}
 		if (entity instanceof LivingEntity _entity)
-			_entity.addEffect(new MobEffectInstance(HardDeathMcreatorModMobEffects.MEMENTO_MORI.get(), 12000, 5));
+			_entity.addEffect(new MobEffectInstance(HardDeathMcreatorModMobEffects.MEMENTO_MORI.get(),
+					(int) (entity.getCapability(HardDeathMcreatorModVariables.PLAYER_VARIABLES_CAPABILITY, null)
+							.orElse(new HardDeathMcreatorModVariables.PlayerVariables())).memento_mori_time_left,
+					(int) (entity.getCapability(HardDeathMcreatorModVariables.PLAYER_VARIABLES_CAPABILITY, null)
+							.orElse(new HardDeathMcreatorModVariables.PlayerVariables())).memento_mori_lv));
 	}
 }
