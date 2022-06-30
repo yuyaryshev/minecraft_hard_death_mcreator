@@ -52,6 +52,10 @@
           {
             "name": "entity",
             "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
           }
         ]
       }
@@ -87,6 +91,38 @@
           }
         ]
       }
+    },
+    {
+      "name": "ClearMementoMoriCommandExecuted",
+      "type": "procedure",
+      "sortid": 6,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "clear_memento_mori_command_executed",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "cmdparams",
+            "type": "map"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ClearMementoMori",
+      "type": "command",
+      "sortid": 6,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "clear_memento_mori"
     }
   ],
   "variable_elements": [
@@ -101,10 +137,31 @@
       "type": "number",
       "scope": "player_persistent",
       "value": "0"
+    },
+    {
+      "name": "mementoMoriIlnessInterval",
+      "type": "number",
+      "scope": "global",
+      "value": "7200.0"
+    },
+    {
+      "name": "mementoMoriIlnessBlindnessDuration",
+      "type": "number",
+      "scope": "map",
+      "value": "90.0"
+    },
+    {
+      "name": "mementoMoriIlnessNauseaDuration",
+      "type": "number",
+      "scope": "global",
+      "value": "30.0"
     }
   ],
   "sound_elements": [],
   "language_map": {
+    "ru_ru": {
+      "effect.hard_death_mcreator.memento_mori": "Memento Mori"
+    },
     "en_us": {
       "effect.hard_death_mcreator.memento_mori": "Memento Mori"
     }
@@ -127,6 +184,7 @@
     "dependants": [],
     "mcreatorDependencies": [],
     "currentGenerator": "forge-1.18.2",
+    "credits": "Created using mod maker MCreator - https://mcreator.net/about",
     "modElementsPackage": "net.mcreator.harddeathmcreator",
     "lockBaseModFiles": false
   },

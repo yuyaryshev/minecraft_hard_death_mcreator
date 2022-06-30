@@ -34,7 +34,7 @@ public class MementoMoriMobEffect extends MobEffect {
 
 	@Override
 	public void applyEffectTick(LivingEntity entity, int amplifier) {
-		MementoMoriOnEffectActiveTickProcedure.execute(entity);
+		MementoMoriOnEffectActiveTickProcedure.execute(entity.level, entity);
 	}
 
 	@Override
