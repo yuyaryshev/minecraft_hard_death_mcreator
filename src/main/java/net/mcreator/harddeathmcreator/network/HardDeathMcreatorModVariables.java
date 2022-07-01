@@ -37,7 +37,7 @@ import java.util.function.Supplier;
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class HardDeathMcreatorModVariables {
 	public static double mementoMoriIlnessInterval = 3600.0;
-	public static double mementoMoriIlnessNauseaDuration = 30.0;
+	public static double mementoMoriIlnessNauseaDuration = 150.0;
 	public static double mementoMoriBlackoutInterval = 7200.0;
 
 	@SubscribeEvent
@@ -150,7 +150,7 @@ public class HardDeathMcreatorModVariables {
 
 	public static class MapVariables extends SavedData {
 		public static final String DATA_NAME = "hard_death_mcreator_mapvars";
-		public double mementoMoriIlnessBlindnessDuration = 90.0;
+		public double mementoMoriIlnessBlindnessDuration = 60.0;
 
 		public static MapVariables load(CompoundTag tag) {
 			MapVariables data = new MapVariables();

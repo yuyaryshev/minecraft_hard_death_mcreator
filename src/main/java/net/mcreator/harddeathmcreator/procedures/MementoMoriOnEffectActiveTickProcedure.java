@@ -42,17 +42,25 @@ public class MementoMoriOnEffectActiveTickProcedure {
 					? _livEnt.getEffect(HardDeathMcreatorModMobEffects.MEMENTO_MORI.get()).getDuration()
 					: 0) % HardDeathMcreatorModVariables.mementoMoriIlnessInterval <= 0) {
 				if (entity instanceof LivingEntity _entity)
+					_entity.removeEffect(MobEffects.WEAKNESS);
+				if (entity instanceof LivingEntity _entity)
 					_entity.addEffect(
 							new MobEffectInstance(MobEffects.WEAKNESS, (int) HardDeathMcreatorModVariables.mementoMoriIlnessInterval, (int) mmlv));
 				if (mmlv >= 4) {
+					if (entity instanceof LivingEntity _entity)
+						_entity.removeEffect(MobEffects.MOVEMENT_SLOWDOWN);
 					if (entity instanceof LivingEntity _entity)
 						_entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN,
 								(int) HardDeathMcreatorModVariables.mementoMoriIlnessInterval, 3));
 				} else if (mmlv >= 3) {
 					if (entity instanceof LivingEntity _entity)
+						_entity.removeEffect(MobEffects.MOVEMENT_SLOWDOWN);
+					if (entity instanceof LivingEntity _entity)
 						_entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN,
 								(int) HardDeathMcreatorModVariables.mementoMoriIlnessInterval, 2));
 				} else if (mmlv >= 2) {
+					if (entity instanceof LivingEntity _entity)
+						_entity.removeEffect(MobEffects.MOVEMENT_SLOWDOWN);
 					if (entity instanceof LivingEntity _entity)
 						_entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN,
 								(int) HardDeathMcreatorModVariables.mementoMoriIlnessInterval, 1));
@@ -63,10 +71,14 @@ public class MementoMoriOnEffectActiveTickProcedure {
 					: 0) % HardDeathMcreatorModVariables.mementoMoriBlackoutInterval <= 0) {
 				if (mmlv > 2) {
 					if (entity instanceof LivingEntity _entity)
+						_entity.removeEffect(MobEffects.CONFUSION);
+					if (entity instanceof LivingEntity _entity)
 						_entity.addEffect(new MobEffectInstance(MobEffects.CONFUSION,
 								(int) (HardDeathMcreatorModVariables.mementoMoriIlnessNauseaDuration * (mmlv - 2)), (int) (mmlv - 2)));
 				}
 				if (mmlv > 3) {
+					if (entity instanceof LivingEntity _entity)
+						_entity.removeEffect(MobEffects.BLINDNESS);
 					if (entity instanceof LivingEntity _entity)
 						_entity.addEffect(new MobEffectInstance(MobEffects.BLINDNESS,
 								(int) (HardDeathMcreatorModVariables.MapVariables.get(world).mementoMoriIlnessBlindnessDuration * (mmlv - 3)),

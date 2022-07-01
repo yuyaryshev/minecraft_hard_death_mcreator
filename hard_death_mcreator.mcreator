@@ -136,13 +136,13 @@
       "name": "mementoMoriIlnessBlindnessDuration",
       "type": "number",
       "scope": "map",
-      "value": "90.0"
+      "value": "60.0"
     },
     {
       "name": "mementoMoriIlnessNauseaDuration",
       "type": "number",
       "scope": "global",
-      "value": "30.0"
+      "value": "150.0"
     },
     {
       "name": "mementoMoriBlackoutInterval",

@@ -25,13 +25,24 @@ public class MementoMoriOnDeathProcedure {
 	private static void execute(@Nullable Event event, Entity entity) {
 		if (entity == null)
 			return;
-		{
-			double _setval = (entity.getCapability(HardDeathMcreatorModVariables.PLAYER_VARIABLES_CAPABILITY, null)
-					.orElse(new HardDeathMcreatorModVariables.PlayerVariables())).memento_mori_lv + 1;
-			entity.getCapability(HardDeathMcreatorModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
-				capability.memento_mori_lv = _setval;
-				capability.syncPlayerVariables(entity);
-			});
+		if ((entity.getCapability(HardDeathMcreatorModVariables.PLAYER_VARIABLES_CAPABILITY, null)
+				.orElse(new HardDeathMcreatorModVariables.PlayerVariables())).memento_mori_lv <= 0) {
+			{
+				double _setval = 1;
+				entity.getCapability(HardDeathMcreatorModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
+					capability.memento_mori_lv = _setval;
+					capability.syncPlayerVariables(entity);
+				});
+			}
+		} else {
+			{
+				double _setval = (entity.getCapability(HardDeathMcreatorModVariables.PLAYER_VARIABLES_CAPABILITY, null)
+						.orElse(new HardDeathMcreatorModVariables.PlayerVariables())).memento_mori_lv + 1;
+				entity.getCapability(HardDeathMcreatorModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
+					capability.memento_mori_lv = _setval;
+					capability.syncPlayerVariables(entity);
+				});
+			}
 		}
 		if ((entity.getCapability(HardDeathMcreatorModVariables.PLAYER_VARIABLES_CAPABILITY, null)
 				.orElse(new HardDeathMcreatorModVariables.PlayerVariables())).memento_mori_lv > 5) {

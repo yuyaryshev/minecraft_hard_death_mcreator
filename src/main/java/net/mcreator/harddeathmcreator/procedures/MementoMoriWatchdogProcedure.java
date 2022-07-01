@@ -9,6 +9,7 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.network.chat.TextComponent;
 
@@ -40,9 +41,25 @@ public class MementoMoriWatchdogProcedure {
 				&& (entity.getCapability(HardDeathMcreatorModVariables.PLAYER_VARIABLES_CAPABILITY, null)
 						.orElse(new HardDeathMcreatorModVariables.PlayerVariables())).memento_mori_lv > 0) {
 			if (entity instanceof LivingEntity _entity)
+				_entity.removeAllEffects();
+			if (entity instanceof LivingEntity _entity)
 				_entity.addEffect(new MobEffectInstance(HardDeathMcreatorModMobEffects.MEMENTO_MORI.get(),
 						(int) (entity.getCapability(HardDeathMcreatorModVariables.PLAYER_VARIABLES_CAPABILITY, null)
 								.orElse(new HardDeathMcreatorModVariables.PlayerVariables())).memento_mori_time_left,
+						(int) (entity.getCapability(HardDeathMcreatorModVariables.PLAYER_VARIABLES_CAPABILITY, null)
+								.orElse(new HardDeathMcreatorModVariables.PlayerVariables())).memento_mori_lv));
+			if (entity instanceof LivingEntity _entity)
+				_entity.addEffect(new MobEffectInstance(MobEffects.BLINDNESS,
+						(int) ((entity.getCapability(HardDeathMcreatorModVariables.PLAYER_VARIABLES_CAPABILITY, null)
+								.orElse(new HardDeathMcreatorModVariables.PlayerVariables())).memento_mori_lv
+								* HardDeathMcreatorModVariables.MapVariables.get(world).mementoMoriIlnessBlindnessDuration * 3),
+						(int) (entity.getCapability(HardDeathMcreatorModVariables.PLAYER_VARIABLES_CAPABILITY, null)
+								.orElse(new HardDeathMcreatorModVariables.PlayerVariables())).memento_mori_lv));
+			if (entity instanceof LivingEntity _entity)
+				_entity.addEffect(new MobEffectInstance(MobEffects.CONFUSION,
+						(int) ((entity.getCapability(HardDeathMcreatorModVariables.PLAYER_VARIABLES_CAPABILITY, null)
+								.orElse(new HardDeathMcreatorModVariables.PlayerVariables())).memento_mori_lv
+								* HardDeathMcreatorModVariables.mementoMoriIlnessNauseaDuration * 3),
 						(int) (entity.getCapability(HardDeathMcreatorModVariables.PLAYER_VARIABLES_CAPABILITY, null)
 								.orElse(new HardDeathMcreatorModVariables.PlayerVariables())).memento_mori_lv));
 			if (entity instanceof Player _player && !_player.level.isClientSide())
