@@ -39,7 +39,7 @@ public class HardDeathMcreatorModVariables {
 	public static double mementoMoriIlnessIntervalSeconds = 120.0;
 	public static double mementoMoriIlnessNauseaDurationSeconds = 9.0;
 	public static double mementoMoriBlackoutIntervalSeconds = 120.0;
-	public static double mementoMoriDurationSeconds = 0.0;
+	public static double mementoMoriDurationSeconds = 600.0;
 	public static double mementoMoriExpBase = 2.0;
 
 	@SubscribeEvent

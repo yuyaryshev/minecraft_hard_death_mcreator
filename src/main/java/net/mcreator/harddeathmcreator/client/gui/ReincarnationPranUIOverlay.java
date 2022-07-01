@@ -6,19 +6,19 @@ import org.checkerframework.checker.units.qual.h;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
-import net.minecraftforge.client.event.RenderGameOverlayEvent;
+import net.minecraftforge.client.event.ScreenEvent;
 import net.minecraftforge.api.distmarker.Dist;
 
 import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.client.renderer.GameRenderer;
+import net.minecraft.client.gui.screens.inventory.InventoryScreen;
 import net.minecraft.client.Minecraft;
 
 import net.mcreator.harddeathmcreator.procedures.ShouldShowPranaProcedure;
 import net.mcreator.harddeathmcreator.procedures.ShouldShowMmDurationProcedure;
 import net.mcreator.harddeathmcreator.procedures.ShouldShowDeathUIProcedure;
-import net.mcreator.harddeathmcreator.procedures.HasMementoMoriProcedure;
 import net.mcreator.harddeathmcreator.network.HardDeathMcreatorModVariables;
 
 import com.mojang.blaze3d.systems.RenderSystem;
@@ -27,10 +27,10 @@ import com.mojang.blaze3d.platform.GlStateManager;
 @Mod.EventBusSubscriber({Dist.CLIENT})
 public class ReincarnationPranUIOverlay {
 	@SubscribeEvent(priority = EventPriority.NORMAL)
-	public static void eventHandler(RenderGameOverlayEvent.Pre event) {
-		if (event.getType() == RenderGameOverlayEvent.ElementType.ALL) {
-			int w = event.getWindow().getGuiScaledWidth();
-			int h = event.getWindow().getGuiScaledHeight();
+	public static void eventHandler(ScreenEvent.DrawScreenEvent.Post event) {
+		if (event.getScreen() instanceof InventoryScreen) {
+			int w = event.getScreen().width;
+			int h = event.getScreen().height;
 			int posX = w / 2;
 			int posY = h / 2;
 			Level _world = null;
@@ -58,23 +58,13 @@ public class ReincarnationPranUIOverlay {
 			if (ShouldShowDeathUIProcedure.execute(entity)) {
 				if (ShouldShowPranaProcedure.execute(entity)) {
 					RenderSystem.setShaderTexture(0, new ResourceLocation("hard_death_mcreator:textures/reincarnation_prana_gauge.png"));
-					Minecraft.getInstance().gui.blit(event.getMatrixStack(), posX + -90, posY + 79, 0, 0, 32, 4, 32, 4);
+					Minecraft.getInstance().gui.blit(event.getPoseStack(), posX + -90, posY + 79, 0, 0, 32, 4, 32, 4);
 				}
-				if (HasMementoMoriProcedure.execute(entity))
-					Minecraft.getInstance().font.draw(event.getMatrixStack(),
-							"v005 Memento Mori Lv "
-									+ ((entity.getCapability(HardDeathMcreatorModVariables.PLAYER_VARIABLES_CAPABILITY, null)
-											.orElse(new HardDeathMcreatorModVariables.PlayerVariables())).memento_mori_lv)
-									+ ", "
-									+ ((entity.getCapability(HardDeathMcreatorModVariables.PLAYER_VARIABLES_CAPABILITY, null)
-											.orElse(new HardDeathMcreatorModVariables.PlayerVariables())).memento_mori_time_left)
-									+ " ticks",
-							posX + -91, posY + 66, -3355444);
 				if (ShouldShowMmDurationProcedure.execute(entity))
-					Minecraft.getInstance().font.draw(event.getMatrixStack(),
+					Minecraft.getInstance().font.draw(event.getPoseStack(),
 							"" + ((entity.getCapability(HardDeathMcreatorModVariables.PLAYER_VARIABLES_CAPABILITY, null)
 									.orElse(new HardDeathMcreatorModVariables.PlayerVariables())).memento_mori_time_str) + "",
-							posX + 30, posY + -120, -1);
+							posX + 70, posY + -120, -1);
 			}
 			RenderSystem.depthMask(true);
 			RenderSystem.defaultBlendFunc();

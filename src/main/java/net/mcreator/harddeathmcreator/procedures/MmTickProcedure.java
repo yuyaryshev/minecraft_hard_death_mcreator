@@ -15,7 +15,6 @@ public class MmTickProcedure {
 			return;
 		String msg = "";
 		double memento_mori_hp = 0;
-		double mmlv = 0;
 		double mm_minutes = 0;
 		double mmlv0 = 0;
 		double mmlv1 = 0;
@@ -36,11 +35,12 @@ public class MmTickProcedure {
 			});
 		}
 		if (mmticks > 32000) {
-			mm_minutes = mmticks / 1200;
+			mm_minutes = Math.floor(mmticks / 1200);
 			{
-				String _setval = "Memento Mori Lvl " + mmlv1 + " " + new java.text.DecimalFormat("##").format(mm_minutes / 60) + ":"
-						+ new java.text.DecimalFormat("##").format(mm_minutes % 60) + ":"
-						+ new java.text.DecimalFormat("##").format((mmticks % 1200) / 20);
+				String _setval = "Memento Mori Lvl " + mmlv1 + " " + (Math.floor(mm_minutes / 60) < 10 ? "" : "0")
+						+ new java.text.DecimalFormat("##").format(Math.floor(mm_minutes / 60)) + ":" + (mm_minutes % 60 < 10 ? "" : "0")
+						+ new java.text.DecimalFormat("##").format(mm_minutes % 60) + ":" + (Math.floor((mmticks % 1200) / 20) < 10 ? "" : "0")
+						+ new java.text.DecimalFormat("##").format(Math.floor((mmticks % 1200) / 20));
 				entity.getCapability(HardDeathMcreatorModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
 					capability.memento_mori_time_str = _setval;
 					capability.syncPlayerVariables(entity);
@@ -65,22 +65,22 @@ public class MmTickProcedure {
 			if (entity instanceof LivingEntity _entity)
 				_entity.removeEffect(MobEffects.WEAKNESS);
 			if (entity instanceof LivingEntity _entity)
-				_entity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, (int) illnessInTicks, (int) (mmlv - 1)));
+				_entity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, (int) illnessInTicks, (int) mmlv0));
 			if (mmlv1 >= 4) {
 				if (entity instanceof LivingEntity _entity)
 					_entity.removeEffect(MobEffects.MOVEMENT_SLOWDOWN);
 				if (entity instanceof LivingEntity _entity)
-					_entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, (int) illnessInTicks, 3));
+					_entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, (int) illnessInTicks, 2));
 			} else if (mmlv1 >= 3) {
 				if (entity instanceof LivingEntity _entity)
 					_entity.removeEffect(MobEffects.MOVEMENT_SLOWDOWN);
 				if (entity instanceof LivingEntity _entity)
-					_entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, (int) illnessInTicks, 2));
+					_entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, (int) illnessInTicks, 1));
 			} else if (mmlv1 >= 2) {
 				if (entity instanceof LivingEntity _entity)
 					_entity.removeEffect(MobEffects.MOVEMENT_SLOWDOWN);
 				if (entity instanceof LivingEntity _entity)
-					_entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, (int) illnessInTicks, 1));
+					_entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, (int) illnessInTicks, 0));
 			}
 		}
 		if (mmticks % (HardDeathMcreatorModVariables.mementoMoriBlackoutIntervalSeconds * 20) <= 0) {

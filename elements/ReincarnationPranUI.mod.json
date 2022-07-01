@@ -20,22 +20,6 @@
       {
         "type": "label",
         "data": {
-          "text": "v005 Memento Mori Lv <VAR:memento_mori_lv>, <VAR:memento_mori_time_left> ticks",
-          "color": {
-            "value": -3355444,
-            "falpha": 0.0
-          },
-          "displayCondition": {
-            "name": "HasMementoMori"
-          },
-          "name": "v005 Memento Mori Lv <VAR:memento_mori_lv>, <VAR:memento_mori_time_left> ticks",
-          "x": 122,
-          "y": 186
-        }
-      },
-      {
-        "type": "label",
-        "data": {
           "text": "<VAR:memento_mori_time_str>",
           "color": {
             "value": -1,
@@ -45,13 +29,13 @@
             "name": "ShouldShowMmDuration"
           },
           "name": "<VAR:memento_mori_time_str>",
-          "x": 243,
+          "x": 283,
           "y": 0
         }
       }
     ],
     "baseTexture": "",
-    "overlayTarget": "Ingame",
+    "overlayTarget": "Inventory",
     "displayCondition": {
       "name": "ShouldShowDeathUI"
     },
