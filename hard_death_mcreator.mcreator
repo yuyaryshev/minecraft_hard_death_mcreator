@@ -111,6 +111,82 @@
           }
         ]
       }
+    },
+    {
+      "name": "ReincarnationPranUI",
+      "type": "overlay",
+      "sortid": 8,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "reincarnation_pran_ui"
+    },
+    {
+      "name": "ReincarnationPranUIDisplayOverlayIngame",
+      "type": "procedure",
+      "sortid": 9,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "reincarnation_pran_ui_display_overlay_ingame",
+      "metadata": {
+        "return_type": "logic",
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ShouldShowDeathUI",
+      "type": "procedure",
+      "sortid": 10,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "should_show_death_ui",
+      "metadata": {
+        "return_type": "logic",
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "HasMementoMori",
+      "type": "procedure",
+      "sortid": 11,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "has_memento_mori",
+      "metadata": {
+        "return_type": "logic",
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ReincarnationPranaIsntFull",
+      "type": "procedure",
+      "sortid": 12,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "reincarnation_prana_isnt_full",
+      "metadata": {
+        "return_type": "logic",
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -118,13 +194,13 @@
       "name": "memento_mori_lv",
       "type": "number",
       "scope": "player_persistent",
-      "value": "0"
+      "value": "0.0"
     },
     {
       "name": "memento_mori_time_left",
       "type": "number",
       "scope": "player_persistent",
-      "value": "0"
+      "value": "0.0"
     },
     {
       "name": "mementoMoriIlnessInterval",
@@ -149,6 +225,12 @@
       "type": "number",
       "scope": "global",
       "value": "7200.0"
+    },
+    {
+      "name": "reincarnationPrana",
+      "type": "number",
+      "scope": "player_persistent",
+      "value": "100.0"
     }
   ],
   "sound_elements": [],

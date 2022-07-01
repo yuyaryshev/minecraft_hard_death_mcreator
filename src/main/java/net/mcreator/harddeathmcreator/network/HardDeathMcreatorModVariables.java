@@ -85,6 +85,7 @@ public class HardDeathMcreatorModVariables {
 					.orElse(new PlayerVariables()));
 			clone.memento_mori_lv = original.memento_mori_lv;
 			clone.memento_mori_time_left = original.memento_mori_time_left;
+			clone.reincarnationPrana = original.reincarnationPrana;
 			if (!event.isWasDeath()) {
 			}
 		}
@@ -254,8 +255,9 @@ public class HardDeathMcreatorModVariables {
 	}
 
 	public static class PlayerVariables {
-		public double memento_mori_lv = 0;
-		public double memento_mori_time_left = 0;
+		public double memento_mori_lv = 0.0;
+		public double memento_mori_time_left = 0.0;
+		public double reincarnationPrana = 100.0;
 
 		public void syncPlayerVariables(Entity entity) {
 			if (entity instanceof ServerPlayer serverPlayer)
@@ -266,6 +268,7 @@ public class HardDeathMcreatorModVariables {
 			CompoundTag nbt = new CompoundTag();
 			nbt.putDouble("memento_mori_lv", memento_mori_lv);
 			nbt.putDouble("memento_mori_time_left", memento_mori_time_left);
+			nbt.putDouble("reincarnationPrana", reincarnationPrana);
 			return nbt;
 		}
 
@@ -273,6 +276,7 @@ public class HardDeathMcreatorModVariables {
 			CompoundTag nbt = (CompoundTag) Tag;
 			memento_mori_lv = nbt.getDouble("memento_mori_lv");
 			memento_mori_time_left = nbt.getDouble("memento_mori_time_left");
+			reincarnationPrana = nbt.getDouble("reincarnationPrana");
 		}
 	}
 
@@ -300,6 +304,7 @@ public class HardDeathMcreatorModVariables {
 							.orElse(new PlayerVariables()));
 					variables.memento_mori_lv = message.data.memento_mori_lv;
 					variables.memento_mori_time_left = message.data.memento_mori_time_left;
+					variables.reincarnationPrana = message.data.reincarnationPrana;
 				}
 			});
 			context.setPacketHandled(true);

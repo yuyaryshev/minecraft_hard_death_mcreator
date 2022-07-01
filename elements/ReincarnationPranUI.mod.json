@@ -1,0 +1,50 @@
+{
+  "_fv": 28,
+  "_type": "overlay",
+  "definition": {
+    "priority": "NORMAL",
+    "components": [
+      {
+        "type": "image",
+        "data": {
+          "image": "reincarnation_prana_gauge.png",
+          "use1Xscale": true,
+          "displayCondition": {
+            "name": "ReincarnationPranaIsntFull"
+          },
+          "name": "reincarnation_prana_gauge.png",
+          "x": 123,
+          "y": 199
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "text": "Memento Mori Lv <VAR:memento_mori_lv>, <VAR:memento_mori_time_left> ticks",
+          "color": {
+            "value": -3355444,
+            "falpha": 0.0
+          },
+          "displayCondition": {
+            "name": "HasMementoMori"
+          },
+          "name": "Memento Mori Lv <VAR:memento_mori_lv>, <VAR:memento_mori_time_left> ticks",
+          "x": 122,
+          "y": 186
+        }
+      }
+    ],
+    "baseTexture": "",
+    "overlayTarget": "Ingame",
+    "displayCondition": {
+      "name": "ShouldShowDeathUI"
+    },
+    "gridSettings": {
+      "sx": 18,
+      "sy": 18,
+      "ox": 11,
+      "oy": 15,
+      "snapOnGrid": false
+    }
+  }
+}
