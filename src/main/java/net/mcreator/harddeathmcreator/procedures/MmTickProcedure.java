@@ -37,10 +37,10 @@ public class MmTickProcedure {
 		if (mmticks > 32000) {
 			mm_minutes = Math.floor(mmticks / 1200);
 			{
-				String _setval = "Memento Mori Lvl " + mmlv1 + " " + (Math.floor(mm_minutes / 60) < 10 ? "" : "0")
-						+ new java.text.DecimalFormat("##").format(Math.floor(mm_minutes / 60)) + ":" + (mm_minutes % 60 < 10 ? "" : "0")
-						+ new java.text.DecimalFormat("##").format(mm_minutes % 60) + ":" + (Math.floor((mmticks % 1200) / 20) < 10 ? "" : "0")
-						+ new java.text.DecimalFormat("##").format(Math.floor((mmticks % 1200) / 20));
+				String _setval = "Memento Mori Lvl " + mmlv1 + " " + (Math.floor(mm_minutes / 60) < 10 ? "0" : "")
+						+ new java.text.DecimalFormat("##").format(Math.floor(mm_minutes / 60)) + ":" + (mm_minutes % 60 < 10 ? "0" : "")
+						+ new java.text.DecimalFormat("##").format(mm_minutes % 60) + ":" + (Math.floor((mmticks % 1200) / 20) < 10 ? "0" : "")
+						+ new java.text.DecimalFormat("##").format(Math.floor((mmticks % 1200) / 20)) + " (" + Math.floor(mm_minutes / 60) + " mins)";
 				entity.getCapability(HardDeathMcreatorModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
 					capability.memento_mori_time_str = _setval;
 					capability.syncPlayerVariables(entity);
