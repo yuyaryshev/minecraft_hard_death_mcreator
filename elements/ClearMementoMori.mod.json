@@ -5,7 +5,7 @@
     "commandName": "clearmementomori",
     "permissionLevel": "4",
     "onCommandExecuted": {
-      "name": "ClearMementoMoriCommandExecuted"
+      "name": "MmClearCmd"
     }
   }
 }

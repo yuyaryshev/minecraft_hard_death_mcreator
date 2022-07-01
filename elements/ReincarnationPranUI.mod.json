@@ -10,7 +10,7 @@
           "image": "reincarnation_prana_gauge.png",
           "use1Xscale": true,
           "displayCondition": {
-            "name": "ReincarnationPranaIsntFull"
+            "name": "ShouldShowPrana"
           },
           "name": "reincarnation_prana_gauge.png",
           "x": 123,
@@ -20,7 +20,7 @@
       {
         "type": "label",
         "data": {
-          "text": "Memento Mori Lv <VAR:memento_mori_lv>, <VAR:memento_mori_time_left> ticks",
+          "text": "v005 Memento Mori Lv <VAR:memento_mori_lv>, <VAR:memento_mori_time_left> ticks",
           "color": {
             "value": -3355444,
             "falpha": 0.0
@@ -28,9 +28,25 @@
           "displayCondition": {
             "name": "HasMementoMori"
           },
-          "name": "Memento Mori Lv <VAR:memento_mori_lv>, <VAR:memento_mori_time_left> ticks",
+          "name": "v005 Memento Mori Lv <VAR:memento_mori_lv>, <VAR:memento_mori_time_left> ticks",
           "x": 122,
           "y": 186
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "text": "<VAR:memento_mori_time_str>",
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "displayCondition": {
+            "name": "ShouldShowMmDuration"
+          },
+          "name": "<VAR:memento_mori_time_str>",
+          "x": 243,
+          "y": 0
         }
       }
     ],

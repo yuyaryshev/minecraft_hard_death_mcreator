@@ -11,13 +11,16 @@
     "isInstant": false,
     "isBad": true,
     "isBenefitical": false,
-    "renderStatusInInventory": false,
+    "renderStatusInInventory": true,
     "renderStatusInHUD": true,
     "onActiveTick": {
-      "name": "MementoMoriOnEffectActiveTick"
+      "name": "MmTick"
     },
     "onExpired": {
-      "name": "MementoMoriEffectExpires"
+      "name": "MmFinish"
+    },
+    "activeTickCondition": {
+      "name": "MmShouldTick"
     }
   }
 }

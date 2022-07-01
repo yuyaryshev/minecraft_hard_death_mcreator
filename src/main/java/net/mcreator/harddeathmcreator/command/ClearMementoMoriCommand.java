@@ -13,7 +13,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.CommandSourceStack;
 
-import net.mcreator.harddeathmcreator.procedures.ClearMementoMoriCommandExecutedProcedure;
+import net.mcreator.harddeathmcreator.procedures.MmClearCmdProcedure;
 
 import java.util.HashMap;
 import java.util.Arrays;
@@ -47,7 +47,7 @@ public class ClearMementoMoriCommand {
 			index[0]++;
 		});
 
-		ClearMementoMoriCommandExecutedProcedure.execute(world, entity, cmdparams);
+		MmClearCmdProcedure.execute(world, entity, cmdparams);
 		return 0;
 	}
 }

@@ -9,82 +9,6 @@
       "registry_name": "memento_mori"
     },
     {
-      "name": "MementoMoriOnDeath",
-      "type": "procedure",
-      "sortid": 2,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "memento_mori_on_death",
-      "metadata": {
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          }
-        ]
-      }
-    },
-    {
-      "name": "MementoMoriOnEffectActiveTick",
-      "type": "procedure",
-      "sortid": 3,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "memento_mori_on_effect_active_tick",
-      "metadata": {
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      }
-    },
-    {
-      "name": "MementoMoriEffectExpires",
-      "type": "procedure",
-      "sortid": 5,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "memento_mori_effect_expires",
-      "metadata": {
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          }
-        ]
-      }
-    },
-    {
-      "name": "ClearMementoMoriCommandExecuted",
-      "type": "procedure",
-      "sortid": 6,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "clear_memento_mori_command_executed",
-      "metadata": {
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "cmdparams",
-            "type": "map"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      }
-    },
-    {
       "name": "ClearMementoMori",
       "type": "command",
       "sortid": 6,
@@ -93,49 +17,12 @@
       "registry_name": "clear_memento_mori"
     },
     {
-      "name": "MementoMoriWatchdog",
-      "type": "procedure",
-      "sortid": 7,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "memento_mori_watchdog",
-      "metadata": {
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      }
-    },
-    {
       "name": "ReincarnationPranUI",
       "type": "overlay",
       "sortid": 8,
       "compiles": true,
       "locked_code": false,
       "registry_name": "reincarnation_pran_ui"
-    },
-    {
-      "name": "ReincarnationPranUIDisplayOverlayIngame",
-      "type": "procedure",
-      "sortid": 9,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "reincarnation_pran_ui_display_overlay_ingame",
-      "metadata": {
-        "return_type": "logic",
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          }
-        ]
-      }
     },
     {
       "name": "ShouldShowDeathUI",
@@ -172,18 +59,168 @@
       }
     },
     {
-      "name": "ReincarnationPranaIsntFull",
+      "name": "MmFinish",
       "type": "procedure",
-      "sortid": 12,
+      "sortid": 15,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "reincarnation_prana_isnt_full",
+      "registry_name": "mm_finish",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "MmTick",
+      "type": "procedure",
+      "sortid": 16,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "mm_tick",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "MmRespawn",
+      "type": "procedure",
+      "sortid": 17,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "mm_respawn",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "MmDeath",
+      "type": "procedure",
+      "sortid": 18,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "mm_death",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "MmClearCmd",
+      "type": "procedure",
+      "sortid": 19,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "mm_clear_cmd",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "cmdparams",
+            "type": "map"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "MmWatchdog",
+      "type": "procedure",
+      "sortid": 20,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "mm_watchdog",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ShouldShowPrana",
+      "type": "procedure",
+      "sortid": 21,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "should_show_prana",
       "metadata": {
         "return_type": "logic",
         "dependencies": [
           {
             "name": "entity",
             "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ShouldShowMmDuration",
+      "type": "procedure",
+      "sortid": 22,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "should_show_mm_duration",
+      "metadata": {
+        "return_type": "logic",
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "MmShouldTick",
+      "type": "procedure",
+      "sortid": 23,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "mm_should_tick",
+      "metadata": {
+        "return_type": "logic",
+        "dependencies": [
+          {
+            "name": "duration",
+            "type": "number"
           }
         ]
       }
@@ -203,34 +240,52 @@
       "value": "0.0"
     },
     {
-      "name": "mementoMoriIlnessInterval",
+      "name": "mementoMoriIlnessIntervalSeconds",
       "type": "number",
       "scope": "global",
-      "value": "3600.0"
+      "value": "120.0"
     },
     {
-      "name": "mementoMoriIlnessBlindnessDuration",
+      "name": "mementoMoriIlnessBlindnessDurationSeconds",
       "type": "number",
       "scope": "map",
-      "value": "60.0"
+      "value": "3.0"
     },
     {
-      "name": "mementoMoriIlnessNauseaDuration",
+      "name": "mementoMoriIlnessNauseaDurationSeconds",
       "type": "number",
       "scope": "global",
-      "value": "150.0"
+      "value": "9.0"
     },
     {
-      "name": "mementoMoriBlackoutInterval",
+      "name": "mementoMoriBlackoutIntervalSeconds",
       "type": "number",
       "scope": "global",
-      "value": "7200.0"
+      "value": "120.0"
     },
     {
       "name": "reincarnationPrana",
       "type": "number",
       "scope": "player_persistent",
       "value": "100.0"
+    },
+    {
+      "name": "memento_mori_time_str",
+      "type": "string",
+      "scope": "player_lifetime",
+      "value": "\"\""
+    },
+    {
+      "name": "mementoMoriDurationSeconds",
+      "type": "number",
+      "scope": "global",
+      "value": "0.0"
+    },
+    {
+      "name": "mementoMoriExpBase",
+      "type": "number",
+      "scope": "global",
+      "value": "2.0"
     }
   ],
   "sound_elements": [],

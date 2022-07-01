@@ -36,9 +36,11 @@ import java.util.function.Supplier;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class HardDeathMcreatorModVariables {
-	public static double mementoMoriIlnessInterval = 3600.0;
-	public static double mementoMoriIlnessNauseaDuration = 150.0;
-	public static double mementoMoriBlackoutInterval = 7200.0;
+	public static double mementoMoriIlnessIntervalSeconds = 120.0;
+	public static double mementoMoriIlnessNauseaDurationSeconds = 9.0;
+	public static double mementoMoriBlackoutIntervalSeconds = 120.0;
+	public static double mementoMoriDurationSeconds = 0.0;
+	public static double mementoMoriExpBase = 2.0;
 
 	@SubscribeEvent
 	public static void init(FMLCommonSetupEvent event) {
@@ -87,6 +89,7 @@ public class HardDeathMcreatorModVariables {
 			clone.memento_mori_time_left = original.memento_mori_time_left;
 			clone.reincarnationPrana = original.reincarnationPrana;
 			if (!event.isWasDeath()) {
+				clone.memento_mori_time_str = original.memento_mori_time_str;
 			}
 		}
 
@@ -151,7 +154,7 @@ public class HardDeathMcreatorModVariables {
 
 	public static class MapVariables extends SavedData {
 		public static final String DATA_NAME = "hard_death_mcreator_mapvars";
-		public double mementoMoriIlnessBlindnessDuration = 60.0;
+		public double mementoMoriIlnessBlindnessDurationSeconds = 3.0;
 
 		public static MapVariables load(CompoundTag tag) {
 			MapVariables data = new MapVariables();
@@ -160,12 +163,12 @@ public class HardDeathMcreatorModVariables {
 		}
 
 		public void read(CompoundTag nbt) {
-			mementoMoriIlnessBlindnessDuration = nbt.getDouble("mementoMoriIlnessBlindnessDuration");
+			mementoMoriIlnessBlindnessDurationSeconds = nbt.getDouble("mementoMoriIlnessBlindnessDurationSeconds");
 		}
 
 		@Override
 		public CompoundTag save(CompoundTag nbt) {
-			nbt.putDouble("mementoMoriIlnessBlindnessDuration", mementoMoriIlnessBlindnessDuration);
+			nbt.putDouble("mementoMoriIlnessBlindnessDurationSeconds", mementoMoriIlnessBlindnessDurationSeconds);
 			return nbt;
 		}
 
@@ -258,6 +261,7 @@ public class HardDeathMcreatorModVariables {
 		public double memento_mori_lv = 0.0;
 		public double memento_mori_time_left = 0.0;
 		public double reincarnationPrana = 100.0;
+		public String memento_mori_time_str = "\"\"";
 
 		public void syncPlayerVariables(Entity entity) {
 			if (entity instanceof ServerPlayer serverPlayer)
@@ -269,6 +273,7 @@ public class HardDeathMcreatorModVariables {
 			nbt.putDouble("memento_mori_lv", memento_mori_lv);
 			nbt.putDouble("memento_mori_time_left", memento_mori_time_left);
 			nbt.putDouble("reincarnationPrana", reincarnationPrana);
+			nbt.putString("memento_mori_time_str", memento_mori_time_str);
 			return nbt;
 		}
 
@@ -277,6 +282,7 @@ public class HardDeathMcreatorModVariables {
 			memento_mori_lv = nbt.getDouble("memento_mori_lv");
 			memento_mori_time_left = nbt.getDouble("memento_mori_time_left");
 			reincarnationPrana = nbt.getDouble("reincarnationPrana");
+			memento_mori_time_str = nbt.getString("memento_mori_time_str");
 		}
 	}
 
@@ -305,6 +311,7 @@ public class HardDeathMcreatorModVariables {
 					variables.memento_mori_lv = message.data.memento_mori_lv;
 					variables.memento_mori_time_left = message.data.memento_mori_time_left;
 					variables.reincarnationPrana = message.data.reincarnationPrana;
+					variables.memento_mori_time_str = message.data.memento_mori_time_str;
 				}
 			});
 			context.setPacketHandled(true);

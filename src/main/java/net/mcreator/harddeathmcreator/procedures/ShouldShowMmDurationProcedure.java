@@ -4,11 +4,11 @@ import net.minecraft.world.entity.Entity;
 
 import net.mcreator.harddeathmcreator.network.HardDeathMcreatorModVariables;
 
-public class ReincarnationPranaIsntFullProcedure {
+public class ShouldShowMmDurationProcedure {
 	public static boolean execute(Entity entity) {
 		if (entity == null)
 			return false;
 		return (entity.getCapability(HardDeathMcreatorModVariables.PLAYER_VARIABLES_CAPABILITY, null)
-				.orElse(new HardDeathMcreatorModVariables.PlayerVariables())).reincarnationPrana < 100;
+				.orElse(new HardDeathMcreatorModVariables.PlayerVariables())).memento_mori_time_left >= 32000;
 	}
 }

@@ -15,8 +15,9 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.client.Minecraft;
 
+import net.mcreator.harddeathmcreator.procedures.ShouldShowPranaProcedure;
+import net.mcreator.harddeathmcreator.procedures.ShouldShowMmDurationProcedure;
 import net.mcreator.harddeathmcreator.procedures.ShouldShowDeathUIProcedure;
-import net.mcreator.harddeathmcreator.procedures.ReincarnationPranaIsntFullProcedure;
 import net.mcreator.harddeathmcreator.procedures.HasMementoMoriProcedure;
 import net.mcreator.harddeathmcreator.network.HardDeathMcreatorModVariables;
 
@@ -55,13 +56,13 @@ public class ReincarnationPranUIOverlay {
 					GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
 			RenderSystem.setShaderColor(1, 1, 1, 1);
 			if (ShouldShowDeathUIProcedure.execute(entity)) {
-				if (ReincarnationPranaIsntFullProcedure.execute(entity)) {
+				if (ShouldShowPranaProcedure.execute(entity)) {
 					RenderSystem.setShaderTexture(0, new ResourceLocation("hard_death_mcreator:textures/reincarnation_prana_gauge.png"));
 					Minecraft.getInstance().gui.blit(event.getMatrixStack(), posX + -90, posY + 79, 0, 0, 32, 4, 32, 4);
 				}
 				if (HasMementoMoriProcedure.execute(entity))
 					Minecraft.getInstance().font.draw(event.getMatrixStack(),
-							"Memento Mori Lv "
+							"v005 Memento Mori Lv "
 									+ ((entity.getCapability(HardDeathMcreatorModVariables.PLAYER_VARIABLES_CAPABILITY, null)
 											.orElse(new HardDeathMcreatorModVariables.PlayerVariables())).memento_mori_lv)
 									+ ", "
@@ -69,6 +70,11 @@ public class ReincarnationPranUIOverlay {
 											.orElse(new HardDeathMcreatorModVariables.PlayerVariables())).memento_mori_time_left)
 									+ " ticks",
 							posX + -91, posY + 66, -3355444);
+				if (ShouldShowMmDurationProcedure.execute(entity))
+					Minecraft.getInstance().font.draw(event.getMatrixStack(),
+							"" + ((entity.getCapability(HardDeathMcreatorModVariables.PLAYER_VARIABLES_CAPABILITY, null)
+									.orElse(new HardDeathMcreatorModVariables.PlayerVariables())).memento_mori_time_str) + "",
+							posX + 30, posY + -120, -1);
 			}
 			RenderSystem.depthMask(true);
 			RenderSystem.defaultBlendFunc();
