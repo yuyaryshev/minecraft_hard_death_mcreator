@@ -30,28 +30,30 @@ public class MmRespawnProcedure {
 	private static void execute(@Nullable Event event, LevelAccessor world, Entity entity) {
 		if (entity == null)
 			return;
-		if ((entity.getCapability(HardDeathMcreatorModVariables.PLAYER_VARIABLES_CAPABILITY, null)
-				.orElse(new HardDeathMcreatorModVariables.PlayerVariables())).memento_mori_time_left > 0
-				&& (entity.getCapability(HardDeathMcreatorModVariables.PLAYER_VARIABLES_CAPABILITY, null)
-						.orElse(new HardDeathMcreatorModVariables.PlayerVariables())).memento_mori_lv > 0) {
+		if (!(entity instanceof Player _plr ? _plr.getAbilities().instabuild : false)) {
+			if ((entity.getCapability(HardDeathMcreatorModVariables.PLAYER_VARIABLES_CAPABILITY, null)
+					.orElse(new HardDeathMcreatorModVariables.PlayerVariables())).memento_mori_time_left > 0
+					&& (entity.getCapability(HardDeathMcreatorModVariables.PLAYER_VARIABLES_CAPABILITY, null)
+							.orElse(new HardDeathMcreatorModVariables.PlayerVariables())).memento_mori_lv > 0) {
+				if (entity instanceof LivingEntity _entity)
+					_entity.removeAllEffects();
+			}
 			if (entity instanceof LivingEntity _entity)
-				_entity.removeAllEffects();
+				_entity.addEffect(new MobEffectInstance(MobEffects.BLINDNESS,
+						(int) (((entity.getCapability(HardDeathMcreatorModVariables.PLAYER_VARIABLES_CAPABILITY, null)
+								.orElse(new HardDeathMcreatorModVariables.PlayerVariables())).memento_mori_lv - 1)
+								* HardDeathMcreatorModVariables.MapVariables.get(world).mementoMoriIlnessBlindnessDurationSeconds * 20 * 3),
+						(int) (entity.getCapability(HardDeathMcreatorModVariables.PLAYER_VARIABLES_CAPABILITY, null)
+								.orElse(new HardDeathMcreatorModVariables.PlayerVariables())).memento_mori_lv));
+			if (entity instanceof LivingEntity _entity)
+				_entity.addEffect(new MobEffectInstance(MobEffects.CONFUSION,
+						(int) (((entity.getCapability(HardDeathMcreatorModVariables.PLAYER_VARIABLES_CAPABILITY, null)
+								.orElse(new HardDeathMcreatorModVariables.PlayerVariables())).memento_mori_lv - 1)
+								* HardDeathMcreatorModVariables.mementoMoriIlnessNauseaDurationSeconds * 20 * 3),
+						(int) (entity.getCapability(HardDeathMcreatorModVariables.PLAYER_VARIABLES_CAPABILITY, null)
+								.orElse(new HardDeathMcreatorModVariables.PlayerVariables())).memento_mori_lv));
+			if (entity instanceof Player _player)
+				_player.getFoodData().setFoodLevel(5);
 		}
-		if (entity instanceof LivingEntity _entity)
-			_entity.addEffect(new MobEffectInstance(MobEffects.BLINDNESS,
-					(int) (((entity.getCapability(HardDeathMcreatorModVariables.PLAYER_VARIABLES_CAPABILITY, null)
-							.orElse(new HardDeathMcreatorModVariables.PlayerVariables())).memento_mori_lv - 1)
-							* HardDeathMcreatorModVariables.MapVariables.get(world).mementoMoriIlnessBlindnessDurationSeconds * 20 * 3),
-					(int) (entity.getCapability(HardDeathMcreatorModVariables.PLAYER_VARIABLES_CAPABILITY, null)
-							.orElse(new HardDeathMcreatorModVariables.PlayerVariables())).memento_mori_lv));
-		if (entity instanceof LivingEntity _entity)
-			_entity.addEffect(new MobEffectInstance(MobEffects.CONFUSION,
-					(int) (((entity.getCapability(HardDeathMcreatorModVariables.PLAYER_VARIABLES_CAPABILITY, null)
-							.orElse(new HardDeathMcreatorModVariables.PlayerVariables())).memento_mori_lv - 1)
-							* HardDeathMcreatorModVariables.mementoMoriIlnessNauseaDurationSeconds * 20 * 3),
-					(int) (entity.getCapability(HardDeathMcreatorModVariables.PLAYER_VARIABLES_CAPABILITY, null)
-							.orElse(new HardDeathMcreatorModVariables.PlayerVariables())).memento_mori_lv));
-		if (entity instanceof Player _player)
-			_player.getFoodData().setFoodLevel(5);
 	}
 }
